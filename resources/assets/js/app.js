@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -15,7 +14,38 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+/**
+ * font awesome section start
+ */
+
+import {library} from '@fortawesome/fontawesome-svg-core'
+import {faUser,faReply,faInfo,faEnvelope,faExclamationTriangle} from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
+import { dom } from '@fortawesome/fontawesome-svg-core'
+
+dom.watch() // This will kick of the initial replacement of i to svg tags and configure a MutationObserver
+library.add(faUser,faReply,faInfo,faEnvelope,faExclamationTriangle)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+Vue.config.productionTip = false
+
+/**
+ * font awesome section end
+ */
+
+/**
+ * Vue component section start
+ */
+Vue.component('landing-component', require('./components/front_end/health_service/landing_page/LandingPage.vue'));
+Vue.component('get-started', require('./components/front_end/health_service/landing_page/GetStarted.vue'));
+Vue.component('user-feedback', require('./components/front_end/health_service/landing_page/UserFeedback.vue'));
+Vue.component('medical-tips', require('./components/front_end/health_service/landing_page/MedicalTips.vue'));
+Vue.component('vue-advertisement', require('./components/front_end/health_service/landing_page/Advertise.vue'));
+Vue.component('emergency-service', require('./components/front_end/health_service/landing_page/EmergencyService.vue'));
+/**
+ * Vue component section start
+ */
 
 const app = new Vue({
     el: '#app'

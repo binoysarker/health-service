@@ -12,5 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('front_end.health_service.landing_page.landing_page');
 });
