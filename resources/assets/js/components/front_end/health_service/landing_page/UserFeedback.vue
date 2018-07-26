@@ -1,5 +1,5 @@
 <template lang="html">
-  <section class="container is-fluid">
+  <section >
     <div class="hero">
       <div class="hero-body">
         <h1 class="title">User Feedback</h1>
@@ -45,7 +45,7 @@
         <div class="control">
           <button class="button is-link">Submit</button>
         </div>
-        
+
       </div>
     </form>
   </section>

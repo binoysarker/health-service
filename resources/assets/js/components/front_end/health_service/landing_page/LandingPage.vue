@@ -1,7 +1,7 @@
 <template lang="html">
-  <div class="columns">
+  <div class="columns is-gapless">
     <!-- first column -->
-    <div class="coulmn is-4">
+    <div class="coulmn is-4" >
       <!-- get started section -->
       <section class="section">
         <get-started></get-started>
@@ -13,7 +13,7 @@
     </div>
 
     <!-- second column -->
-    <div class="coulmn is-4">
+    <div class="coulmn is-4" >
       <!-- medical tips -->
       <section class="section">
         <medical-tips></medical-tips>
@@ -21,8 +21,8 @@
     </div>
 
 
-    <!-- thired column -->
-    <div class="coulmn is-4">
+    <!-- third column -->
+    <div class="coulmn is-4 is-narrow">
       <!-- advertisement section -->
       <section class="section">
         <vue-advertisement></vue-advertisement>
@@ -46,4 +46,21 @@ export default {
 </script>
 
 <style lang="css">
+/**
+This is to control the main landing page css part
+*/
+h1.title{
+  color: #797098;
+}
+strong a{
+  color: #84B269;
+}
+div.hero-body{
+  padding-left: 0px;
+}
+#emergency{
+  background-color: #B6B6B6;
+}
+
+
 </style>

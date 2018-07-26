@@ -1,98 +1,74 @@
 <template lang="html">
-  <section class="container is-fluid">
+  <section >
     <div class="hero">
       <div class="hero-body">
         <h1 class="title">Emergency Service</h1>
       </div>
     </div>
     <article class="media">
-      
+
       <div class="media-content">
         <div class="content">
           <p>
-            <strong>Daily Exersice Prediction</strong>
+            <strong><a href="#">Daily Exersice Prediction</a></strong>
             <br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros,
           </p>
         </div>
-        <nav class="level is-mobile">
-          <div class="level-left">
-            <a class="level-item">
-              <i class="fas fa-info "></i>view more...
-            </a>
-          </div>
-        </nav>
+
       </div>
-      <div class="media-right">
-        <button class="delete"></button>
-      </div>
+
     </article>
     <article class="media">
-      
+
       <div class="media-content">
         <div class="content">
           <p>
-            <strong>Daily Exersice Prediction</strong>
+            <strong><a href="#">Daily Exersice Prediction</a></strong>
             <br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros,
           </p>
         </div>
-        <nav class="level is-mobile">
-          <div class="level-left">
-            <a class="level-item">
-              <i class="fas fa-info "></i>view more...
-            </a>
-          </div>
-        </nav>
+
       </div>
-      <div class="media-right">
-        <button class="delete"></button>
-      </div>
+
     </article>
     <article class="media">
-      
+
       <div class="media-content">
         <div class="content">
           <p>
-            <strong>Daily Exersice Prediction</strong>
+            <strong><a href="#">Daily Exersice Prediction</a></strong>
             <br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros,
           </p>
         </div>
-        <nav class="level is-mobile">
-          <div class="level-left">
-            <a class="level-item">
-              <i class="fas fa-info "></i>view more...
-            </a>
-          </div>
-        </nav>
+
       </div>
-      <div class="media-right">
-        <button class="delete"></button>
-      </div>
+
     </article>
     <article class="media">
-      
+
       <div class="media-content">
         <div class="content">
           <p>
-            <strong>Daily Exersice Prediction</strong>
+            <strong><a href="#">Daily Exersice Prediction</a></strong>
             <br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros,
           </p>
         </div>
-        <nav class="level is-mobile">
-          <div class="level-left">
-            <a class="level-item">
-              <i class="fas fa-info "></i>view more...
-            </a>
-          </div>
-        </nav>
+
       </div>
-      <div class="media-right">
-        <button class="delete"></button>
-      </div>
+
     </article>
+    <!-- more new section -->
+    <nav class="label">
+      <div class="label-left">
+        <div class="label-item">
+          <a href="#">More News...</a>
+        </div>
+      </div>
+    </nav>
   </section>
 </template>
 
@@ -101,5 +77,12 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
+strong a{
+  color: #C8706F;
+}
+nav.label{
+  padding-top: 2rem;
+}
+
 </style>
