@@ -13,3 +13,8 @@ let mix = require('laravel-mix');
 
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');
+
+// this is for mixing class
+mix.styles([
+    'resources/assets/css/emoji.css'
+], 'public/css/myCustomCss.css');

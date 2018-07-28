@@ -10,7 +10,7 @@
       <div class="media-content">
         <div class="content">
           <p>
-            <strong><a href="#">Daily Exersice Prediction</a></strong>
+            <strong><a :href="baseUrl+'home'">Daily Exersice Prediction</a></strong>
             <br>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros,
           </p>
@@ -24,7 +24,7 @@
       <div class="media-content">
         <div class="content">
           <p>
-            <strong><a href="#">Daily Exersice Prediction</a></strong>
+            <strong><a :href="baseUrl+'home'">Daily Exersice Prediction</a></strong>
             <br>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros,
           </p>
@@ -38,7 +38,7 @@
       <div class="media-content">
         <div class="content">
           <p>
-            <strong><a href="#">Daily Exersice Prediction</a></strong>
+            <strong><a :href="baseUrl+'home'">Daily Exersice Prediction</a></strong>
             <br>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros,
           </p>
@@ -52,7 +52,7 @@
       <div class="media-content">
         <div class="content">
           <p>
-            <strong><a href="#">Daily Exersice Prediction</a></strong>
+            <strong><a :href="baseUrl+'home'">Daily Exersice Prediction</a></strong>
             <br>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros,
           </p>
@@ -65,7 +65,7 @@
     <nav class="label">
       <div class="label-left">
         <div class="label-item">
-          <a href="#">More News...</a>
+          <a :href="baseUrl+'home'">More News...</a>
         </div>
       </div>
     </nav>
@@ -74,6 +74,11 @@
 
 <script>
 export default {
+  computed:{
+    baseUrl(){
+      return this.$store.state.baseUrl;
+    },
+  },
 }
 </script>
 

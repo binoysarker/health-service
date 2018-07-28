@@ -23,12 +23,12 @@ import {router} from './route/route';
  */
 
 import {library} from '@fortawesome/fontawesome-svg-core'
-import {faUser,faReply,faInfo,faEnvelope,faExclamationTriangle,faComment,faCartPlus,faBook,faFlask,faBookOpen,faBriefcase} from '@fortawesome/free-solid-svg-icons'
+import {faUser,faReply,faInfo,faEnvelope,faExclamationTriangle,faComment,faCartPlus,faBook,faFlask,faBookOpen,faBriefcase,faSignOutAlt,faMale,faHeart,faKey} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 import { dom } from '@fortawesome/fontawesome-svg-core'
 
 dom.watch() // This will kick of the initial replacement of i to svg tags and configure a MutationObserver
-library.add(faUser,faReply,faInfo,faEnvelope,faExclamationTriangle,faComment,faCartPlus,faBook,faFlask,faBookOpen,faBriefcase)
+library.add(faUser,faReply,faInfo,faEnvelope,faExclamationTriangle,faComment,faCartPlus,faBook,faFlask,faBookOpen,faBriefcase,faSignOutAlt,faMale,faHeart,faKey)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
@@ -54,6 +54,11 @@ Vue.component('emergency-service', require('./components/front_end/health_servic
 // home page section start
 
 Vue.component('vue-navbar', require('./components/front_end/health_service/home_page/Navbar.vue'));
+Vue.component('vue-user-article', require('./components/front_end/health_service/home_page/UserArticle.vue'));
+Vue.component('donner-story', require('./components/front_end/health_service/home_page/DonnerStory.vue'));
+Vue.component('donner-online', require('./components/front_end/health_service/home_page/DonnerOnline.vue'));
+Vue.component('chat-box', require('./components/front_end/health_service/home_page/ChatBox.vue'));
+Vue.component('footer-section', require('./components/front_end/health_service/home_page/Footer.vue'));
 
 
 // home page section end
