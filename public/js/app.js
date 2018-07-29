@@ -32762,7 +32762,11 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
   state: {
     baseUrl: window.location.href,
     makeActive: false,
-    makeMessageActive: false
+    makeMessageActive: false,
+    emojiNamesInClass: [{ name: 'em em-smile' }, { name: 'em em---1' }, { name: 'em em-angry' }, { name: 'em em-bell' }, { name: 'em em-blush' }, { name: 'em em-boy' }, { name: 'em em-carrot' }, { name: 'em em-cop' }, { name: 'em em-astonished' }, { name: 'em em-banana' }, { name: 'em em-blond-haired-man' }],
+    showEmojiSection: false,
+    chatInputText: '',
+    goToNewLine: '<br>'
   },
   getters: {},
   mutations: {
@@ -32771,11 +32775,45 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
     },
     setMakeMessageActive: function setMakeMessageActive(state, payload) {
       state.makeMessageActive = payload;
+    },
+    showEmojiSection: function showEmojiSection(state, payload) {
+      state.showEmojiSection = payload;
+    },
+    chatInputText: function chatInputText(state, payload) {
+      state.chatInputText = payload;
+    },
+    getEmojiName: function getEmojiName(state, payload) {
+      state.showEmojiSection = false;
+      var emojiList = _.map(state.emojiNamesInClass, 'name');
+      // console.log(emojiList[payload]);
+      state.chatInputText += ' <i class="' + emojiList[payload] + '" ></i>';
+    },
+    sendData: function sendData(state, payload) {
+      // console.log(payload);
+      var formData = new FormData();
+      formData.append('user_id', payload.payload);
+      formData.append('text_body', payload.getChatMessage);
+      // console.log(formData);
+      __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post(state.baseUrl + '/chat-box', formData).then(function (res) {
+        console.log(res.data);
+      }).catch(function (err) {
+        console.log(err);
+      });
     }
+
   },
   actions: {
     showMenu: function showMenu(context) {
       context.commit('showMenu');
+    },
+    getEmojiName: function getEmojiName(context, payload) {
+      context.commit('getEmojiName', payload);
+    },
+
+    sendData: function sendData(context, payload) {
+      var getChatMessage = context.state.chatInputText;
+
+      context.commit('sendData', { getChatMessage: getChatMessage, payload: payload });
     }
 
   }
@@ -40925,7 +40963,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\nnav.navbar,div.navbar-dropdown,div.navbar-menu{\n  background-color: #2B2F64;\n}\np.heading, p.title{\n  color: white;\n  font-size: 12px;\n}\na.navbar-link,a.navbar-item:hover p{\n  color: #2B2F64;\n}\ndiv.navbar-item.has-dropdown:hover a.navbar-link{\n  background-color: #2B2F64 !important;\n}\ndiv.navbar-burger span{\n  color: white;\n}\n.is-active{\n  -webkit-animation: showWithScroll .5s;\n          animation: showWithScroll .5s;\n}\n@-webkit-keyframes showWithScroll {\nfrom{opacity: 0\n}\nto{opacity: 1\n}\n}\n@keyframes showWithScroll {\nfrom{opacity: 0\n}\nto{opacity: 1\n}\n}\n\n", ""]);
+exports.push([module.i, "\nnav.navbar,div.navbar-dropdown,div.navbar-menu{\n  background-color: #2B2F64;\n}\np.heading, p.title{\n  color: white;\n  font-size: 12px;\n}\na.navbar-link,a.navbar-item:hover p{\n  color: #2B2F64;\n}\ndiv.navbar-item.has-dropdown:hover a.navbar-link{\n  background-color: #2B2F64 !important;\n}\ndiv.navbar-burger span{\n  color: white;\n}\n.is-active{\n  -webkit-animation: showWithScroll .5s;\n          animation: showWithScroll .5s;\n}\n@-webkit-keyframes showWithScroll {\nfrom{opacity: 0\n}\nto{opacity: 1\n}\n}\n@keyframes showWithScroll {\nfrom{opacity: 0\n}\nto{opacity: 1\n}\n}\n.navbar-brand img{\n  margin-left: 0.5rem;\n}\n", ""]);
 
 // exports
 
@@ -41609,7 +41647,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "section" }, [
+    return _c("section", [
       _c("div", { staticClass: "card" }, [
         _c("div", { staticClass: "card-image" }, [
           _c("figure", { staticClass: "image is-2by1" }, [
@@ -42827,7 +42865,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.message-container[data-v-56a41677]{\n  width: 22.5rem;\n  border-radius: 5px;\n}\n/* Enter and leave animations can use different */\n/* durations and timing functions.              */\n.slide-fade-enter-active[data-v-56a41677] {\n  -webkit-transition: all .3s ease;\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-56a41677] {\n  -webkit-transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-56a41677], .slide-fade-leave-to[data-v-56a41677]\n/* .slide-fade-leave-active below version 2.1.8 */ {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n.message-container[data-v-56a41677]{\n  width: 22.5rem;\n  border-radius: 5px;\n}\n/* Enter and leave animations can use different */\n/* durations and timing functions.              */\n.slide-fade-enter-active[data-v-56a41677] {\n  -webkit-transition: all .3s ease;\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-56a41677] {\n  -webkit-transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-56a41677], .slide-fade-leave-to[data-v-56a41677]\n/* .slide-fade-leave-active below version 2.1.8 */ {\n-webkit-transform: translateX(10px);\n        transform: translateX(10px);\nopacity: 0;\n}\n/*\nshowEmojiSection\n*/\n.emojiButton[data-v-56a41677]{\n  position: relative;\n}\n.showEmojiSection[data-v-56a41677]{\n  position: absolute;\n  z-index: 40;\n  left: 6rem;\n  top: 7.5rem;\n  overflow: scroll;\n  height: 7rem;\n}\n", ""]);
 
 // exports
 
@@ -42885,6 +42923,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: {
@@ -42895,9 +42943,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       set: function set(value) {
         this.$store.commit('setMakeMessageActive', value);
       }
+    },
+    emojiNamesInClass: function emojiNamesInClass() {
+      return this.$store.state.emojiNamesInClass;
+    },
+
+    showEmojiSection: {
+      get: function get() {
+        return this.$store.state.showEmojiSection;
+      },
+      set: function set(value) {
+        this.$store.commit('showEmojiSection', value);
+      }
+    },
+    chatInputText: {
+      get: function get() {
+        return this.$store.state.chatInputText;
+      },
+      set: function set(value) {
+        this.$store.commit('chatInputText', value);
+      }
     }
   },
-  methods: {}
+  methods: {
+    getEmojiName: function getEmojiName(index) {
+      this.$store.dispatch('getEmojiName', index);
+    },
+    sendData: function sendData() {
+      // console.log(this.auth_id);
+      var auth_id = this.auth_id;
+      this.$store.dispatch('sendData', auth_id);
+    }
+  },
+  props: ['auth_id']
 
 });
 
@@ -42939,21 +43017,58 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "notification is-info " }, [
-                  _vm._v(
-                    "\n          Primar lorem ipsum dolor sit amet, consectetur "
-                  ),
-                  _c("i", { staticClass: "em em-smile" })
-                ]),
+                _c("div", {
+                  staticClass: "notification is-info ",
+                  domProps: { innerHTML: _vm._s(_vm.chatInputText) }
+                }),
                 _vm._v(" "),
                 _c("nav", { staticClass: "level" }, [
                   _c("div", { staticClass: "level-left" }, [
                     _c("div", { staticClass: "level-item" }, [
                       _c("div", { staticClass: "field has-addons" }, [
                         _c("p", { staticClass: "control" }, [
-                          _c("input", {
-                            staticClass: "input",
-                            attrs: { type: "text", placeholder: "Find a post" }
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model.trim",
+                                value: _vm.chatInputText,
+                                expression: "chatInputText",
+                                modifiers: { trim: true }
+                              }
+                            ],
+                            staticClass: "textarea",
+                            attrs: {
+                              name: "name",
+                              placeholder: "Start Typing"
+                            },
+                            domProps: { value: _vm.chatInputText },
+                            on: {
+                              keyup: function($event) {
+                                if (
+                                  !("button" in $event) &&
+                                  _vm._k(
+                                    $event.keyCode,
+                                    "enter",
+                                    13,
+                                    $event.key,
+                                    "Enter"
+                                  )
+                                ) {
+                                  return null
+                                }
+                                _vm.sendData()
+                              },
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.chatInputText = $event.target.value.trim()
+                              },
+                              blur: function($event) {
+                                _vm.$forceUpdate()
+                              }
+                            }
                           })
                         ]),
                         _vm._v(" "),
@@ -42962,7 +43077,15 @@ var render = function() {
                             "button",
                             {
                               staticClass: "button",
-                              attrs: { type: "button", name: "button" }
+                              attrs: {
+                                type: "button emojiButton",
+                                name: "button"
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.showEmojiSection = !_vm.showEmojiSection
+                                }
+                              }
                             },
                             [_c("i", { staticClass: "em em-smiley" })]
                           )
@@ -42972,7 +43095,41 @@ var render = function() {
                   ])
                 ])
               ])
-            ])
+            ]),
+            _vm._v(" "),
+            _vm.showEmojiSection
+              ? _c(
+                  "div",
+                  { staticClass: "notification is-info showEmojiSection" },
+                  [
+                    _c("button", {
+                      staticClass: "delete",
+                      on: {
+                        click: function($event) {
+                          _vm.showEmojiSection = !_vm.showEmojiSection
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm._l(_vm.emojiNamesInClass, function(emoji, index) {
+                      return _c(
+                        "button",
+                        {
+                          key: index,
+                          staticClass: "button is-info",
+                          on: {
+                            click: function($event) {
+                              _vm.getEmojiName(index)
+                            }
+                          }
+                        },
+                        [_c("i", { class: emoji.name })]
+                      )
+                    })
+                  ],
+                  2
+                )
+              : _vm._e()
           ]
         )
       : _vm._e()

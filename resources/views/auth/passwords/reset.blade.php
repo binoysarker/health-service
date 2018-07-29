@@ -16,8 +16,8 @@
         </div>
       @endif
       <form method="POST" action="{{ route('password.request') }}" aria-label="{{ __('Reset Password') }}">
-          @csrf
-          <input type="hidden" name="token" value="{{ $token }}">
+        @csrf
+        <input type="hidden" name="token" value="{{ $token }}">
         <div class="field">
           <label class="label">{{ __('Reset Password') }}</label>
           <div class="control has-icons-left has-icons-right">
@@ -59,14 +59,13 @@
             <span class="icon is-small is-left">
               <i class="fas fa-key"></i>
             </span>
-
+          </div>
         </div>
         <div class="field">
           <div class="control">
             <button type="submit" class="button is-link">{{ __('Reset Password') }}</button>
           </div>
         </div>
-
       </form>
     </div>
   </section>

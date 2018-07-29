@@ -207,5 +207,7 @@ div.navbar-burger span{
   from{opacity: 0}
   to{opacity: 1}
 }
-
+.navbar-brand img{
+  margin-left: 0.5rem;
+}
 </style>

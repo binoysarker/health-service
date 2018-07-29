@@ -15,11 +15,9 @@
       </div>
       <div class="column">
         {{-- related sponser advertisement --}}
-        <section class="section">
-          <vue-advertisement></vue-advertisement>
-        </section>
+        <vue-advertisement></vue-advertisement>
         {{-- donner story book section --}}
-        <section class="container is-fullhd">
+        <section class="section">
           <donner-story></donner-story>
         </section>
       </div>
@@ -30,7 +28,7 @@
       {{-- chat box start --}}
 
       <div class="container is-fullhd">
-        <chat-box></chat-box>
+        <chat-box auth_id="{{auth()->id()}}"></chat-box>
       </div>
     </div>
     {{-- chat box end --}}

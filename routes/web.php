@@ -8,3 +8,5 @@ Route::get('/', function () {
 Route::get('/home','HomeController@index');
 
 Auth::routes();
+// chat sectioin start
+Route::resource('/home/chat-box','ChatBoxController');

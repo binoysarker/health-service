@@ -1,4 +1,4 @@
-<div class="column ">
+<div class="container is-fullhd ">
   <vue-navbar>
     {{-- if user is guest then show the guest section and if registered then show the profile section --}}
     @guest

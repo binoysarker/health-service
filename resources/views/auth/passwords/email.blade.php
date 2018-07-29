@@ -10,8 +10,7 @@
   <section class="columns is-mobile is-centered">
     <div class="column is-half">
       @if (session('status'))
-        <div class="notification is-primary">
-          <button class="delete"></button>
+        <div class="notification is-primary is-active">
           {{ session('status') }}
         </div>
       @endif
