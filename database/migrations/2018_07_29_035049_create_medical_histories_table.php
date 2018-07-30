@@ -16,11 +16,11 @@ class CreateMedicalHistoriesTable extends Migration
         Schema::create('medical_histories', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('patient_id');
-            $table->tinyInteger('diabetic_status');
-            $table->tinyInteger('eye_site_status');
-            $table->tinyInteger('heart_deases');
-            $table->tinyInteger('allergy');
-            $table->tinyInteger('gastric');
+            $table->tinyInteger('diabetic_status')->default(0);
+            $table->tinyInteger('eye_site_status')->default(0);
+            $table->tinyInteger('heart_deases')->default(0);
+            $table->tinyInteger('allergy')->default(0);
+            $table->tinyInteger('gastric')->default(0);
             $table->text('note');
             $table->timestamps();
 
