@@ -6,8 +6,7 @@ Route::get('/', function () {
 
 
 Route::get('/home','HomeController@index');
-// get all users
-Route::get('/home/get-all-users','HomeController@getAllActiveUsers');
+Route::post('/home/get-user-info','HomeController@store');
 // auth routes
 Auth::routes();
 // chat sectioin start

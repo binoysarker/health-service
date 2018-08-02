@@ -23,7 +23,7 @@
       </div>
       {{-- donners online --}}
       <div class="column">
-        <donner-online auth_id="{{auth()->user()->id}}"></donner-online>
+        <donner-online auth_name="{{auth()->user()->name}}"></donner-online>
       </div>
       {{-- chat box start --}}
 

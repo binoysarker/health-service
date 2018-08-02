@@ -25,7 +25,6 @@ export const store = new Vuex.Store({
     chatInputText: '',
     allActiveUsers:{},
     singlePersonDetails:{},
-    lastChatMessages:{},
     allMessages:[{
       message:'',
       user:''
@@ -53,10 +52,14 @@ export const store = new Vuex.Store({
       // console.log(emojiList[payload]);
       state.chatInputText += ' <i class="'+emojiList[payload]+'" ></i>';
     },
-
-    singlePersonDetails:(state,personDetail)=>{
-      state.singlePersonDetails = personDetail;
+    allActiveUsers:(state,allActiveUsers)=>{
+      state.allActiveUsers = allActiveUsers;
     },
+    getPersonDetail:(state,person)=>{
+      state.singlePersonDetails = person;
+      // console.log(person.name);
+    },
+
   },
   actions:{
     showMenu:(context) => {
@@ -65,7 +68,18 @@ export const store = new Vuex.Store({
     getEmojiName:(context,payload)=>{
       context.commit('getEmojiName',payload);
     },
+    allActiveUsers:(context,users)=>{
+      // console.log(users);
+      // now get user info according to their names
+      axios.post(context.state.baseUrl+'/get-user-info',users)
+      .then(res=>{
 
+        context.commit('allActiveUsers',res.data);
+        // console.log(allUsers);
+      })
+      .catch(err=>{console.log(err);})
+      // state.allActiveUsers = users;
+    },
     sendData:(context,UserData)=>{
       // console.log(UserData);
       axios.post(context.state.baseUrl+'/send-chat-message',UserData)
@@ -78,39 +92,6 @@ export const store = new Vuex.Store({
       // context.state.chatInputText = e.message;
       // context.commit('sendData');
     },
-    allActiveUsers:(context)=>{
-      // let request = function(){
-      //   axios.get(context.state.baseUrl+'/get-all-users')
-      //   .then(res=>{
-      //     // now customizing the array
-      //     let newArray = _.map(res.data,function(person){
-      //       return {
-      //         'id':person.id,
-      //         'name': person.name,
-      //         'photo_url': _.replace(person.photo_url,'public/','public/storage/'),
-      //         'active': true,
-      //       };
-      //     });
-      //     context.state.allActiveUsers = newArray;
-      //     // location.reload();
-      //     console.log(newArray);
-      //   })
-      //   .catch(err =>{console.log(err);});
-      //
-      // };
-      // // now run the request
-      // request();
-      // // after a time run this request again and make this process repetadly
-      // setInterval(function(){
-      //   // request();
-      // },40000);
-    },
-    getPersonDetail:(context,personId)=>{
-      let getPersonDetail = _.find(context.state.allActiveUsers,function(person){
-        return person.id == personId;
-      });
-      context.commit('singlePersonDetails',getPersonDetail);
-      // now lets make a request to get all the message of the specific user
-    },
+
   },
 });

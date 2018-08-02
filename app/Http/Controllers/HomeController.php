@@ -24,21 +24,19 @@ class HomeController extends Controller
   */
   public function index()
   {
-    // now let's make a query to set the online status of the authenticated user
-    // $get_auth_user_id = auth()->user()->id;
-    // $user = User::find($get_auth_user_id);
-    // $user->online_status = 1;
-    // $user->save();
-
     return view('front_end.health_service.home.index');
   }
   /**
-   * get all active users
+   * get user info
    */
-   public function getAllActiveUsers()
+   public function store(Request $request)
    {
-     // now get all the authnticated users who are online now
-     $all_active_users = User::where('online_status',1)->take(10)->get();
-     return $all_active_users;
+     // return $request->all();
+     // foreach users i am getting from the active users in the laravel echo join part making a query with than and getting specific user information
+     foreach ($request->all() as $key => $value) {
+       $names = $value['name'];
+       $users[] = User::where('name', $names)->take(10)->get(['id','name','photo_url']);
+     }
+     return $users;
    }
 }

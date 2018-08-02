@@ -45,21 +45,7 @@ class ChatBoxController extends Controller
   */
   public function store(Request $request)
   {
-    // validation first
-    $validatedData = $request->validate([
-        'user_id' => 'required|numeric',
-        'send_to_user' => 'required|numeric',
-        'text_body' => 'required|max:200',
-    ]);
-    // storing the validated data in the chat_boxes table
-    $chat_box = new ChatBox();
-    $chat_box->user_id = $request->user_id;
-    $chat_box->send_to_user = $request->send_to_user;
-    $chat_box->text_body = $request->text_body;
-    $chat_box->save();
-    // after storing the data get it and then return the data
-    $getMessage = ChatBox::where('user_id',$request->user_id)->where('send_to_user',$request->send_to_user)->orderBy('id','desc')->first();
-    return $getMessage;
+    
 
   }
 

@@ -1,28 +1,31 @@
 <template lang="html">
   <section class="container is-fullhd ">
-    <article class="media" v-for="(person,index) in allActiveUsers" :key="index" v-if="auth_id != person.id" @click="getPersonDetail(person.id)">
-      <figure class="media-left" @click="makeMessageActive=!makeMessageActive">
-        <p class="image is-64x64">
-          <img :src="person.photo_url" :alt="person.name">
-        </p>
-      </figure>
-      <!-- {{person}} -->
-      <div class="media-content" @click="makeMessageActive=!makeMessageActive">
-        <div class="content">
-          <p>
-            <strong>{{person.name}}</strong>
+    <div  v-for="(person,index) in allActiveUsers" :key="index" >
+      <article class="media" @click="getPersonDetail(single)" v-for="(single,i) in  person" :key="i" v-if="auth_name != single.name">
+        <figure class="media-left" >
+          <p class="image is-32x32"  >
 
+            <img :src="(single.photo_url).replace('public/','public/storage/')" :alt="single.name">
+            <!-- {{single}} -->
           </p>
-        </div>
-        <nav class="level is-mobile">
-          <div class="level-left">
-            <a class="level-item image is-24x24">
-              <img src="public/img/home_page/online.png" alt="active" title="online" height="28">
-            </a>
+        </figure>
+        <div class="media-content" >
+          <div class="content"  @click="getPersonDetail(single)">
+            <p>
+              <strong @click="getPersonDetail(single)">{{single.name}}</strong>
+
+            </p>
           </div>
-        </nav>
-      </div>
-    </article>
+          <nav class="level is-mobile">
+            <div class="level-left">
+              <a class="level-item image is-24x24">
+                <img src="public/img/home_page/online.png" alt="active" title="online" height="28">
+              </a>
+            </div>
+          </nav>
+        </div>
+      </article>
+    </div>
 
 
   </section>
@@ -30,7 +33,8 @@
 
 <script>
 export default {
-  props:['auth_id'],
+  props:['auth_name'],
+
   computed:{
     baseUrl(){
       return this.$store.state.baseUrl;
@@ -41,16 +45,18 @@ export default {
     },
     allActiveUsers(){
       return this.$store.state.allActiveUsers;
-    }
+    },
+    
   },
   methods:{
-    getPersonDetail(personId){
-      this.$store.dispatch('getPersonDetail',personId);
+    getPersonDetail(person){
+      this.makeMessageActive = ! this.makeMessageActive;
+      this.$store.commit('getPersonDetail',person);
 
     }
   },
   created(){
-    this.$store.dispatch('allActiveUsers');
+    // this.$store.dispatch('allActiveUsers');
     // console.log(this.allActiveUsers);
   },
 }
@@ -61,7 +67,5 @@ article:hover{
   background-color: #DDDFE2;
   cursor: pointer;
 }
-p.image img{
-  border-radius: 50%;
-}
+
 </style>

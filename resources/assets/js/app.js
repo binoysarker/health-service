@@ -13,6 +13,8 @@ import {store} from './store/store';
 // vue chat scroll
 import VueChatScroll from 'vue-chat-scroll'
 Vue.use(VueChatScroll)
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -54,12 +56,18 @@ Vue.component('emergency-service', require('./components/front_end/health_servic
 
 // home page section start
 
-Vue.component('vue-navbar', require('./components/front_end/health_service/home_page/Navbar.vue'));
-Vue.component('vue-user-article', require('./components/front_end/health_service/home_page/UserArticle.vue'));
-Vue.component('donner-story', require('./components/front_end/health_service/home_page/DonnerStory.vue'));
-Vue.component('donner-online', require('./components/front_end/health_service/home_page/DonnerOnline.vue'));
-Vue.component('chat-box', require('./components/front_end/health_service/home_page/ChatBox.vue'));
-Vue.component('footer-section', require('./components/front_end/health_service/home_page/Footer.vue'));
+Vue.component('vue-navbar',
+require('./components/front_end/health_service/home_page/Navbar.vue'));
+Vue.component('vue-user-article',
+require('./components/front_end/health_service/home_page/UserArticle.vue'));
+Vue.component('donner-story',
+require('./components/front_end/health_service/home_page/DonnerStory.vue'));
+Vue.component('donner-online',
+require('./components/front_end/health_service/home_page/DonnerOnline.vue'));
+Vue.component('chat-box',
+require('./components/front_end/health_service/home_page/ChatBox.vue'));
+Vue.component('footer-section',
+require('./components/front_end/health_service/home_page/Footer.vue'));
 
 
 // home page section end
@@ -71,5 +79,4 @@ Vue.component('footer-section', require('./components/front_end/health_service/h
 const app = new Vue({
     el: '#app',
     store: store,
-    
 });
