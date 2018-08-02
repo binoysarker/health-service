@@ -16,6 +16,7 @@ class CreateChatBoxesTable extends Migration
         Schema::create('chat_boxes', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
+            $table->unsignedInteger('send_to_user');
             $table->text('text_body');
             $table->timestamps();
         });

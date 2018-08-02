@@ -10,8 +10,9 @@ window.Vue = require('vue');
 
 // import Vuex
 import {store} from './store/store';
-// import VueRouter
-import {router} from './route/route';
+// vue chat scroll
+import VueChatScroll from 'vue-chat-scroll'
+Vue.use(VueChatScroll)
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -23,12 +24,12 @@ import {router} from './route/route';
  */
 
 import {library} from '@fortawesome/fontawesome-svg-core'
-import {faUser,faReply,faInfo,faEnvelope,faExclamationTriangle,faComment,faCartPlus,faBook,faFlask,faBookOpen,faBriefcase,faSignOutAlt,faMale,faHeart,faKey} from '@fortawesome/free-solid-svg-icons'
+import {faUser,faReply,faInfo,faEnvelope,faExclamationTriangle,faComment,faCartPlus,faBook,faFlask,faBookOpen,faBriefcase,faSignOutAlt,faMale,faHeart,faKey,faUpload} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 import { dom } from '@fortawesome/fontawesome-svg-core'
 
 dom.watch() // This will kick of the initial replacement of i to svg tags and configure a MutationObserver
-library.add(faUser,faReply,faInfo,faEnvelope,faExclamationTriangle,faComment,faCartPlus,faBook,faFlask,faBookOpen,faBriefcase,faSignOutAlt,faMale,faHeart,faKey)
+library.add(faUser,faReply,faInfo,faEnvelope,faExclamationTriangle,faComment,faCartPlus,faBook,faFlask,faBookOpen,faBriefcase,faSignOutAlt,faMale,faHeart,faKey,faUpload)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
@@ -70,5 +71,5 @@ Vue.component('footer-section', require('./components/front_end/health_service/h
 const app = new Vue({
     el: '#app',
     store: store,
-    router,
+    
 });

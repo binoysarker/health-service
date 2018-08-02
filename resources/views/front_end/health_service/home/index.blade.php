@@ -23,12 +23,12 @@
       </div>
       {{-- donners online --}}
       <div class="column">
-        <donner-online></donner-online>
+        <donner-online auth_id="{{auth()->user()->id}}"></donner-online>
       </div>
       {{-- chat box start --}}
 
       <div class="container is-fullhd">
-        <chat-box auth_id="{{auth()->id()}}"></chat-box>
+        <chat-box auth_id="{{auth()->id()}}" auth_name="{{auth()->user()->name}}"></chat-box>
       </div>
     </div>
     {{-- chat box end --}}

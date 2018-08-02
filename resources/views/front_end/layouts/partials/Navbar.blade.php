@@ -35,7 +35,9 @@
         <a class="navbar-link" href="/documentation/overview/start/">
           <div class="level-item has-text-centered">
             <div>
-              <p class="heading"><i class="fas fa-user" aria-hidden="true"></i></p>
+              <p class="heading">
+                <img src="{{asset('public'.Storage::url(auth()->user()->photo_url))}}" alt="Bulma: a modern CSS framework based on Flexbox">
+              </p>
               <p class="title">{{ Auth::user()->name }}</p>
             </div>
           </div>

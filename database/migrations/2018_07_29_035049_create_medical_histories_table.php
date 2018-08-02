@@ -15,7 +15,7 @@ class CreateMedicalHistoriesTable extends Migration
     {
         Schema::create('medical_histories', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('patient_id');
+            $table->unsignedInteger('user_id');
             $table->tinyInteger('diabetic_status')->default(0);
             $table->tinyInteger('eye_site_status')->default(0);
             $table->tinyInteger('heart_deases')->default(0);
@@ -25,7 +25,7 @@ class CreateMedicalHistoriesTable extends Migration
             $table->timestamps();
 
 
-            $table->foreign('patient_id')->references('id')->on('patients');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

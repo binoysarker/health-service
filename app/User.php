@@ -15,7 +15,19 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
+        'mobile_number',
+        'date_of_birth',
+        'gender',
+        'height',
+        'weight',
+        'blood_group',
+        'address',
+        'occupation',
+        'photo_url',
+        'blood_donate_status',
     ];
 
     /**
@@ -24,6 +36,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token'
     ];
 }
