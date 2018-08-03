@@ -68,6 +68,8 @@ Vue.component('chat-box',
 require('./components/front_end/health_service/home_page/ChatBox.vue'));
 Vue.component('footer-section',
 require('./components/front_end/health_service/home_page/Footer.vue'));
+Vue.component('notification',
+require('./components/front_end/health_service/home_page/Notification.vue'));
 
 
 // home page section end

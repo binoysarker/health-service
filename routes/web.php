@@ -12,3 +12,7 @@ Route::post('/home/get-singleperson-info','HomeController@getSinglePersonInfo');
 Auth::routes();
 // chat sectioin start
 Route::post('/home/send-chat-message','ChatBoxController@sendMessage');
+
+// for admin section
+Route::get('/admin', 'NotificationController@index');
+Route::post('/admin/send-notification', 'NotificationController@store');
