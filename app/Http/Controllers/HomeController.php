@@ -29,7 +29,7 @@ class HomeController extends Controller
   /**
    * get user info
    */
-   public function store(Request $request)
+   public function getUserInfo(Request $request)
    {
      // return $request->all();
      // foreach users i am getting from the active users in the laravel echo join part making a query with than and getting specific user information
@@ -38,5 +38,15 @@ class HomeController extends Controller
        $users[] = User::where('name', $names)->take(10)->get(['id','name','photo_url']);
      }
      return $users;
+   }
+   /**
+   * getSinglePersonInfo
+   */
+   public function getSinglePersonInfo(Request $request)
+   {
+     // return $request->name;
+    $name = $request->name;
+    $user = User::where('name',$name)->first(['id','name','photo_url']);
+    return $user;
    }
 }

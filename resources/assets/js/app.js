@@ -75,7 +75,7 @@ require('./components/front_end/health_service/home_page/Footer.vue'));
 /**
  * Vue component section start
  */
-
+ 
 const app = new Vue({
     el: '#app',
     store: store,

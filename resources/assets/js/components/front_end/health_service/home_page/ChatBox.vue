@@ -70,6 +70,11 @@
           typing:'',
         }
       },
+      watch:{
+        allActiveUsers(newValue,oldValue){
+          // console.log(newValue,oldValue);
+        },
+      },
       computed:{
         notificationClass(){
           return{
@@ -94,8 +99,9 @@
           get(){return this.$store.state.chatInputText;},
           set(value){this.$store.commit('chatInputText',value)}
         },
-        allActiveUsers(){
-          return this.$store.state.allActiveUsers;
+        allActiveUsers:{
+          get(){return this.$store.state.allActiveUsers;},
+          set(value){this.$store.commit('allActiveUsers',value)}
         },
         singlePersonDetails(){
           return this.$store.state.singlePersonDetails;
@@ -154,35 +160,37 @@
         Echo.join('chatting')
         .here((users) => {
             // getting all the active users
-            this.numberOfUsers = users.length;
+            this.allActiveUsers = users;
             this.$store.dispatch('allActiveUsers',users);
             
             // console.log(this.allActiveUsers);
           })
         .joining((user) => {
+          this.$store.dispatch('getSinglePersonInfo',user);
           new Noty({
             type: 'success',
             layout: 'topRight',
             timeout:2000,
-            text: user.name +'has signed in !'
+            text: user.name +' has signed in !'
           }).show();
 
             // console.log(user.name);
           })
         .leaving((user) => {
+          this.allActiveUsers.pop();
          new Noty({
            type: 'success',
            layout: 'topRight',
            timeout:2000,
-           text: user.name +'has signed out !'
+           text: user.name +' has signed out !'
          }).show();
             // console.log(user.name);
           });
       },
       props:['auth_id','auth_name'],
-      
 
     }
+    
     </script>
 
     <style lang="css" scoped>

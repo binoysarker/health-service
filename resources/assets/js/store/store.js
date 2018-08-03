@@ -59,7 +59,12 @@ export const store = new Vuex.Store({
       state.singlePersonDetails = person;
       // console.log(person.name);
     },
-
+    getSinglePersonInfo:(state,user)=>{
+      state.allActiveUsers.push({
+        'name':user.name,
+        'photo_url':_.replace(user.photo_url, 'public/', 'public/storage/')
+      });
+    },
   },
   actions:{
     showMenu:(context) => {
@@ -73,9 +78,21 @@ export const store = new Vuex.Store({
       // now get user info according to their names
       axios.post(context.state.baseUrl+'/get-user-info',users)
       .then(res=>{
-
-        context.commit('allActiveUsers',res.data);
-        // console.log(allUsers);
+        // now here i have done the most beautifule and hard task for me is that to customize 2d array to 1d array
+        let ArrayToConvert = res.data;
+        let newArray = [];
+        for (var i = 0; i < ArrayToConvert.length; i++) {
+          newArray = _.concat(newArray, ArrayToConvert[i]); 
+        };
+        // now to modify the values in the array using map method
+        let finalArray = _.map(newArray,function (person) {
+          return{
+            'name':person.name,
+            'photo_url':_.replace(person.photo_url, 'public/', 'public/storage/')
+          }
+        })
+        context.commit('allActiveUsers',finalArray);
+        // console.log(newArray);
       })
       .catch(err=>{console.log(err);})
       // state.allActiveUsers = users;
@@ -92,6 +109,17 @@ export const store = new Vuex.Store({
       // context.state.chatInputText = e.message;
       // context.commit('sendData');
     },
-
+    getSinglePersonInfo:(context,user)=>{
+      axios.post(context.state.baseUrl+'/get-singleperson-info',user)
+      .then(res=>{
+        // console.log(res.data);
+        context.commit('getSinglePersonInfo',res.data);
+        // context.state.allActiveUsers.push({
+        //   'name':user.name,
+        //   'photo_url':user.photo_url
+        // });
+      })
+      .catch(err=>{console.log(err);})
+    },
   },
 });

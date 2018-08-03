@@ -1,18 +1,18 @@
 <template lang="html">
   <section class="container is-fullhd ">
-    <div  v-for="(person,index) in allActiveUsers" :key="index" >
-      <article class="media" @click="getPersonDetail(single)" v-for="(single,i) in  person" :key="i" v-if="auth_name != single.name">
+      <article class="media" @click="getPersonDetail(person)" v-for="(person,index) in allActiveUsers" :key="index" >
+        <!-- {{person}} -->
         <figure class="media-left" >
           <p class="image is-32x32"  >
 
-            <img :src="(single.photo_url).replace('public/','public/storage/')" :alt="single.name">
-            <!-- {{single}} -->
+            <img :src="person.photo_url" :alt="person.name">
+            <!-- {{person}} -->
           </p>
         </figure>
         <div class="media-content" >
-          <div class="content"  @click="getPersonDetail(single)">
+          <div class="content"  @click="getPersonDetail(person)">
             <p>
-              <strong @click="getPersonDetail(single)">{{single.name}}</strong>
+              <strong @click="getPersonDetail(person)">{{person.name}}</strong>
 
             </p>
           </div>
@@ -25,7 +25,6 @@
           </nav>
         </div>
       </article>
-    </div>
 
 
   </section>
@@ -43,8 +42,9 @@ export default {
       get(){return this.$store.state.makeMessageActive;},
       set(value){this.$store.commit('setMakeMessageActive',value)},
     },
-    allActiveUsers(){
-      return this.$store.state.allActiveUsers;
+    allActiveUsers:{
+      get(){return this.$store.state.allActiveUsers;},
+      set(value){this.$store.commit('allActiveUsers',value)}
     },
     
   },
