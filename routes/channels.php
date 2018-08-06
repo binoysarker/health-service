@@ -22,3 +22,7 @@ Broadcast::channel('chatting',function ($user)
 {
   return ['name'=>$user->name];
 });
+Broadcast::channel('chatting',function ($message)
+{
+  return ['message'=>$message];
+});
