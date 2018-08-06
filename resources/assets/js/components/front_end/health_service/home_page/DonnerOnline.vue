@@ -55,10 +55,7 @@ export default {
 
     }
   },
-  created(){
-    // this.$store.dispatch('allActiveUsers');
-    // console.log(this.allActiveUsers);
-  },
+  
 }
 </script>
 

@@ -34,7 +34,7 @@ class NotificationController extends Controller
   */
   public function getUserInfo(Request $request)
   {
-    // return $request->all();
+    return $request->all();
 
     $name = $request->name;
     $user = User::where('name','like',$name.'%')->limit(5)->get(['id','name']);

@@ -67,6 +67,7 @@ export const store = new Vuex.Store({
       // console.log(person.name);
     },
     getSinglePersonInfo:(state,user)=>{
+      // console.log(user);
       state.allActiveUsers.push({
         'name':user.name,
         'photo_url':_.replace(user.photo_url, 'public/', 'public/storage/')
@@ -106,6 +107,7 @@ export const store = new Vuex.Store({
       axios.post(context.state.baseUrl+'/get-user-info',users)
       .then(res=>{
         // now here i have done the most beautifule and hard task for me is that to customize 2d array to 1d array
+        // console.log(res.data);
         let ArrayToConvert = res.data;
         let newArray = [];
         for (var i = 0; i < ArrayToConvert.length; i++) {
@@ -119,7 +121,7 @@ export const store = new Vuex.Store({
           }
         })
         context.commit('allActiveUsers',finalArray);
-        // console.log(newArray);
+        // console.log(finalArray);
       })
       .catch(err=>{console.log(err);})
       // state.allActiveUsers = users;
@@ -137,14 +139,12 @@ export const store = new Vuex.Store({
       // context.commit('sendData');
     },
     getSinglePersonInfo:(context,user)=>{
-      axios.post(context.state.baseUrl+'/get-singleperson-info',user)
+      // console.log(user);
+      axios.post(context.state.baseUrl+'/get-singleperson-info',user.message)
       .then(res=>{
         // console.log(res.data);
         context.commit('getSinglePersonInfo',res.data);
-        // context.state.allActiveUsers.push({
-        //   'name':user.name,
-        //   'photo_url':user.photo_url
-        // });
+
       })
       .catch(err=>{console.log(err);})
     },

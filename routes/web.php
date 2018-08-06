@@ -33,7 +33,7 @@ Auth::routes();
  */
 Route::get('/admin', 'AdminController@index');
 Route::get('/admin/notification', 'NotificationController@index');
-Route::post('/admin/notification/get-user-notification-info', 'NotificationController@getUserInfo');
+Route::post('/admin/notification/get-user-info', 'NotificationController@getUserInfo');
 Route::post('/admin/notification', 'NotificationController@store');
 /**
  * admin section end

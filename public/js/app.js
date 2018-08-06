@@ -41078,6 +41078,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
       // console.log(person.name);
     },
     getSinglePersonInfo: function getSinglePersonInfo(state, user) {
+      // console.log(user);
       state.allActiveUsers.push({
         'name': user.name,
         'photo_url': _.replace(user.photo_url, 'public/', 'public/storage/')
@@ -41116,6 +41117,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
       // now get user info according to their names
       __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post(context.state.baseUrl + '/get-user-info', users).then(function (res) {
         // now here i have done the most beautifule and hard task for me is that to customize 2d array to 1d array
+        // console.log(res.data);
         var ArrayToConvert = res.data;
         var newArray = [];
         for (var i = 0; i < ArrayToConvert.length; i++) {
@@ -41129,7 +41131,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
           };
         });
         context.commit('allActiveUsers', finalArray);
-        // console.log(newArray);
+        // console.log(finalArray);
       }).catch(function (err) {
         console.log(err);
       });
@@ -41148,13 +41150,10 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
       // context.commit('sendData');
     },
     getSinglePersonInfo: function getSinglePersonInfo(context, user) {
-      __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post(context.state.baseUrl + '/get-singleperson-info', user).then(function (res) {
+      // console.log(user);
+      __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post(context.state.baseUrl + '/get-singleperson-info', user.message).then(function (res) {
         // console.log(res.data);
         context.commit('getSinglePersonInfo', res.data);
-        // context.state.allActiveUsers.push({
-        //   'name':user.name,
-        //   'photo_url':user.photo_url
-        // });
       }).catch(function (err) {
         console.log(err);
       });
@@ -48151,11 +48150,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.makeMessageActive = !this.makeMessageActive;
       this.$store.commit('getPersonDetail', person);
     }
-  },
-  created: function created() {
-    // this.$store.dispatch('allActiveUsers');
-    // console.log(this.allActiveUsers);
   }
+
 });
 
 /***/ }),

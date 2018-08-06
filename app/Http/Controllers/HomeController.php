@@ -35,8 +35,9 @@ class HomeController extends Controller
    {
      // return $request->all();
      // foreach users i am getting from the active users in the laravel echo join part making a query with than and getting specific user information
+     $users = [];
      foreach ($request->all() as $key => $value) {
-       $names = $value['name'];
+       $names = $value['message']['name'];
        $users[] = User::where('name', $names)->take(10)->get(['id','name','photo_url']);
      }
      return $users;
