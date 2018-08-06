@@ -131,7 +131,7 @@
           // now empty up the chatbox
           this.chatInputText = '';
         },
-        
+
       },
       mounted(){
         // console.log(this.allActiveUsers);
@@ -162,7 +162,7 @@
             // getting all the active users
             this.allActiveUsers = users;
             this.$store.dispatch('allActiveUsers',users);
-            
+
             // console.log(this.allActiveUsers);
           })
         .joining((user) => {
@@ -171,7 +171,7 @@
             type: 'success',
             layout: 'topRight',
             timeout:2000,
-            text: user.name +' has signed in !'
+            text: user.message.name +' has signed in !'
           }).show();
 
             // console.log(user.name);
@@ -182,7 +182,7 @@
            type: 'success',
            layout: 'topRight',
            timeout:2000,
-           text: user.name +' has signed out !'
+           text: user.message.name +' has signed out !'
          }).show();
             // console.log(user.name);
           });
@@ -190,7 +190,7 @@
       props:['auth_id','auth_name'],
 
     }
-    
+
     </script>
 
     <style lang="css" scoped>

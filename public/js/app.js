@@ -48540,7 +48540,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         type: 'success',
         layout: 'topRight',
         timeout: 2000,
-        text: user.name + ' has signed in !'
+        text: user.message.name + ' has signed in !'
       }).show();
 
       // console.log(user.name);
@@ -48550,7 +48550,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         type: 'success',
         layout: 'topRight',
         timeout: 2000,
-        text: user.name + ' has signed out !'
+        text: user.message.name + ' has signed out !'
       }).show();
       // console.log(user.name);
     });
