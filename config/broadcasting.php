@@ -40,7 +40,6 @@ return [
               'encrypted' => true
             ],
         ],
-
         'redis' => [
             'driver' => 'redis',
             'connection' => 'default',

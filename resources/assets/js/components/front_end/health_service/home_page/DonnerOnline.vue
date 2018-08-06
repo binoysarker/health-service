@@ -1,6 +1,6 @@
 <template lang="html">
   <section class="container is-fullhd ">
-      <article class="media" @click="getPersonDetail(person)" v-for="(person,index) in allActiveUsers" :key="index" >
+      <article class="media" @click="getPersonDetail(person)" v-for="(person,index) in allActiveUsers" :key="index" v-if="auth_name != person.name">
         <!-- {{person}} -->
         <figure class="media-left" >
           <p class="image is-32x32"  >
@@ -46,7 +46,7 @@ export default {
       get(){return this.$store.state.allActiveUsers;},
       set(value){this.$store.commit('allActiveUsers',value)}
     },
-    
+
   },
   methods:{
     getPersonDetail(person){

@@ -1,8 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\UserOffers;
 use App\User;
 
 class HomeController extends Controller
@@ -24,6 +25,7 @@ class HomeController extends Controller
   */
   public function index()
   {
+
     return view('front_end.health_service.home.index');
   }
   /**
@@ -49,4 +51,17 @@ class HomeController extends Controller
     $user = User::where('name',$name)->first(['id','name','photo_url']);
     return $user;
    }
+   /**
+    * getUserNotification and show it as a desktop notification
+    */
+    public function getUserNotification()
+    {
+      $user = User::find(auth()->user()->id);
+      foreach ($user->notifications as $notification) {
+        $storeNotifications[] = $notification->data['data'];
+      }
+      if (isset($storeNotifications)) {
+        return $storeNotifications;
+      }
+    }
 }

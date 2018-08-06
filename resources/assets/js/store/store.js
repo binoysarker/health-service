@@ -29,6 +29,13 @@ export const store = new Vuex.Store({
       message:'',
       user:''
     }],
+    notificationTitle:'',
+    notificationMessage:'',
+    notificationSelected:'',
+    notificationPicked:'',
+    notificationSearchValue:'',
+    notificationUserNames:{},
+    notification_user_id:'',
   },
   getters:{
 
@@ -65,6 +72,26 @@ export const store = new Vuex.Store({
         'photo_url':_.replace(user.photo_url, 'public/', 'public/storage/')
       });
     },
+    notificationTitle:(state,value)=>{
+      state.notificationTitle = value;
+    },
+    notificationMessage:(state,value)=>{
+      state.notificationMessage = value;
+    },
+    notificationSelected:(state,value)=>{
+      state.notificationSelected = value;
+    },
+    notificationPicked:(state,value)=>{
+      state.notificationPicked = value;
+    },
+    notificationSearchValue:(state,value)=>{
+      state.notificationSearchValue = value;
+    },
+    getUserInfo:(state,user)=>{
+      state.notificationSearchValue = user.name;
+      state.notification_user_id = user.id;
+    },
+
   },
   actions:{
     showMenu:(context) => {
@@ -82,7 +109,7 @@ export const store = new Vuex.Store({
         let ArrayToConvert = res.data;
         let newArray = [];
         for (var i = 0; i < ArrayToConvert.length; i++) {
-          newArray = _.concat(newArray, ArrayToConvert[i]); 
+          newArray = _.concat(newArray, ArrayToConvert[i]);
         };
         // now to modify the values in the array using map method
         let finalArray = _.map(newArray,function (person) {
@@ -120,6 +147,32 @@ export const store = new Vuex.Store({
         // });
       })
       .catch(err=>{console.log(err);})
+    },
+    sendNotification:(context)=>{
+      // console.log(context.state.notificationTitle,context.state.notificationMessage);
+      axios.post(context.state.baseUrl+'',{
+        title:context.state.notificationTitle,
+        message:context.state.notificationMessage,
+        picked:context.state.notificationPicked,
+        selected:context.state.notificationSelected,
+        search_value:context.state.notificationSearchValue,
+        user_id:context.state.notification_user_id,
+      })
+      .then(res=>{
+        // console.log(res);
+      })
+      .catch(error=>{console.log(error);})
+    },
+    searchUserName:(context)=>{
+      // make a request to get all the users according to their name
+      axios.post(context.state.baseUrl+'/get-user-info',{
+        name:context.state.notificationSearchValue
+      })
+      .then(res=>{
+        // console.log(res.data);
+        context.state.notificationUserNames = res.data;
+      })
+      .catch(err=>{console.log(err);});
     },
   },
 });

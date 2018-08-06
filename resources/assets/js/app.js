@@ -26,12 +26,12 @@ Vue.use(VueChatScroll)
  */
 
 import {library} from '@fortawesome/fontawesome-svg-core'
-import {faUser,faReply,faInfo,faEnvelope,faExclamationTriangle,faComment,faCartPlus,faBook,faFlask,faBookOpen,faBriefcase,faSignOutAlt,faMale,faHeart,faKey,faUpload} from '@fortawesome/free-solid-svg-icons'
+import {faUser,faReply,faInfo,faEnvelope,faExclamationTriangle,faComment,faCartPlus,faBook,faFlask,faBookOpen,faBriefcase,faSignOutAlt,faMale,faHeart,faKey,faUpload,faAngleDown} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 import { dom } from '@fortawesome/fontawesome-svg-core'
 
 dom.watch() // This will kick of the initial replacement of i to svg tags and configure a MutationObserver
-library.add(faUser,faReply,faInfo,faEnvelope,faExclamationTriangle,faComment,faCartPlus,faBook,faFlask,faBookOpen,faBriefcase,faSignOutAlt,faMale,faHeart,faKey,faUpload)
+library.add(faUser,faReply,faInfo,faEnvelope,faExclamationTriangle,faComment,faCartPlus,faBook,faFlask,faBookOpen,faBriefcase,faSignOutAlt,faMale,faHeart,faKey,faUpload,faAngleDown)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
@@ -69,13 +69,21 @@ require('./components/front_end/health_service/home_page/ChatBox.vue'));
 Vue.component('footer-section',
 require('./components/front_end/health_service/home_page/Footer.vue'));
 
-
 // home page section end
+Vue.component('admin-navbar',
+require('./components/back_end/admin_section/AdminNavbar.vue'));
+Vue.component('admin-sidebar',
+require('./components/back_end/admin_section/AdminSidebar.vue'));
+
+// admin section start
+Vue.component('notification-form',
+require('./components/back_end/admin_section/AdminNotificationForm.vue'));
+// admin section end
 
 /**
  * Vue component section start
  */
- 
+
 const app = new Vue({
     el: '#app',
     store: store,
