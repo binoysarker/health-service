@@ -15,7 +15,6 @@
 </head>
 <body class="has-navbar-fixed-bottom"> {{--this class is used to show the chat box at bottom--}}
   <div  id="app">
-<<<<<<< HEAD
     <div class="columns">
       <div class="column">
         {{-- admin-navbar start --}}
@@ -40,9 +39,6 @@
       </div>
     </section>
     {{-- dashboard section end --}}
-=======
-    @yield('main_content')
->>>>>>> 9836a0ca5838aac6494ef3f951be396cf576cf86
   </div>
   <script type="text/javascript" src="{{asset('public/js/app.js')}}"></script>
 </body>

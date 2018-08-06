@@ -13,7 +13,6 @@ Route::post('/home/get-user-info','HomeController@getUserInfo');
 Route::post('/home/get-singleperson-info','HomeController@getSinglePersonInfo');
 // chat sectioin start
 Route::post('/home/send-chat-message','ChatBoxController@sendMessage');
-<<<<<<< HEAD
 // check user notification
 Route::get('/home/get-user-notification','HomeController@getUserNotification');
 /**
@@ -39,9 +38,3 @@ Route::post('/admin/notification', 'NotificationController@store');
 /**
  * admin section end
  */
-=======
-
-// for admin section
-Route::get('/admin', 'NotificationController@index');
-Route::post('/admin/send-notification', 'NotificationController@store');
->>>>>>> 9836a0ca5838aac6494ef3f951be396cf576cf86
