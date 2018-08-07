@@ -44,7 +44,7 @@
         </a>
       </template>
       <template slot="user_section">
-        <a class="navbar-item " href="">
+        <a class="navbar-item " href="{{route('home-profile')}}">
           <div class="level-item has-text-centered">
             <div>
               <p class="heading"><i class="fas fa-male" aria-hidden="true"></i></p>

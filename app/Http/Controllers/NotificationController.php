@@ -7,9 +7,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 use App\User;
 use App\Notifications\UserOffers;
+use App\Http\Middleware\AdminMiddleware;
 
 class NotificationController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('AdminMiddleware');
+  }
   /**
   * Display a listing of the resource.
   *
@@ -75,6 +80,8 @@ class NotificationController extends Controller
       'title' => 'required|max:55',
       'message' => 'required|max:100',
     ]);
+    
+
     // this part is to send message to single user
     if ($request->picked == null || $request->picked == 'no' || $request->selected == null)
     {

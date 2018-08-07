@@ -5,7 +5,7 @@ Vue.use(Vuex,axios);
 
 export const store = new Vuex.Store({
   state:{
-    baseUrl: window.location.href,
+    baseUrl: 'http://localhost/health-service',
     makeActive: false,
     makeMessageActive:false,
     emojiNamesInClass:[
@@ -104,7 +104,7 @@ export const store = new Vuex.Store({
     allActiveUsers:(context,users)=>{
       // console.log(users);
       // now get user info according to their names
-      axios.post(context.state.baseUrl+'/get-user-info',users)
+      axios.post(context.state.baseUrl+'/home/get-user-info',users)
       .then(res=>{
         // now here i have done the most beautifule and hard task for me is that to customize 2d array to 1d array
         // console.log(res.data);
@@ -128,7 +128,7 @@ export const store = new Vuex.Store({
     },
     sendData:(context,UserData)=>{
       // console.log(UserData);
-      axios.post(context.state.baseUrl+'/send-chat-message',UserData)
+      axios.post(context.state.baseUrl+'/home/send-chat-message',UserData)
       .then(res =>{
         // the Response data is empty so no console.log();
         // console.log(res);
@@ -140,7 +140,7 @@ export const store = new Vuex.Store({
     },
     getSinglePersonInfo:(context,user)=>{
       // console.log(user);
-      axios.post(context.state.baseUrl+'/get-singleperson-info',user.message)
+      axios.post(context.state.baseUrl+'/home/get-singleperson-info',user.message)
       .then(res=>{
         // console.log(res.data);
         context.commit('getSinglePersonInfo',res.data);
@@ -150,7 +150,7 @@ export const store = new Vuex.Store({
     },
     sendNotification:(context)=>{
       // console.log(context.state.notificationTitle,context.state.notificationMessage);
-      axios.post(context.state.baseUrl+'',{
+      axios.post(context.state.baseUrl+'/home',{
         title:context.state.notificationTitle,
         message:context.state.notificationMessage,
         picked:context.state.notificationPicked,
@@ -159,13 +159,13 @@ export const store = new Vuex.Store({
         user_id:context.state.notification_user_id,
       })
       .then(res=>{
-        // console.log(res);
+        console.log(res);
       })
       .catch(error=>{console.log(error);})
     },
     searchUserName:(context)=>{
       // make a request to get all the users according to their name
-      axios.post(context.state.baseUrl+'/get-user-info',{
+      axios.post(context.state.baseUrl+'/admin/notification/get-user-info',{
         name:context.state.notificationSearchValue
       })
       .then(res=>{

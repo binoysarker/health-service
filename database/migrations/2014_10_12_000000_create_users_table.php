@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->char('occupation',55);
             $table->string('photo_url');
             $table->tinyInteger('blood_donate_status')->default(0);
+            $table->tinyInteger('admin_status')->default(0);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

@@ -72,12 +72,23 @@ Vue.component('notification',
 require('./components/front_end/health_service/home_page/Notification.vue'));
 
 // home page section end
+// profile section start
+Vue.component('profile-picture',
+require('./components/front_end/health_service/home_page/profile/ProfilePicture.vue'));
+Vue.component('sub-navbar',
+require('./components/front_end/health_service/home_page/profile/SubNavBar.vue'));
+Vue.component('intro-section',
+require('./components/front_end/health_service/home_page/profile/IntroSection.vue'));
+Vue.component('post-section',
+require('./components/front_end/health_service/home_page/profile/PostSection.vue'));
+
+// profile section end
+// admin section start
 Vue.component('admin-navbar',
 require('./components/back_end/admin_section/AdminNavbar.vue'));
 Vue.component('admin-sidebar',
 require('./components/back_end/admin_section/AdminSidebar.vue'));
 
-// admin section start
 Vue.component('notification-form',
 require('./components/back_end/admin_section/AdminNotificationForm.vue'));
 // admin section end

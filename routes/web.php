@@ -1,4 +1,5 @@
 <?php
+use App\Http\Middleware\AdminMiddleware;
 
 Route::get('/', function () {
     return view('front_end.health_service.landing_page.landing_page');
@@ -7,14 +8,21 @@ Route::get('/', function () {
 /**
  * home page section start
  */
+Route::prefix('home')->group(function ()
+{
+  Route::get('/','HomeController@index');
+  Route::post('/get-user-info','HomeController@getUserInfo');
+  Route::post('/get-singleperson-info','HomeController@getSinglePersonInfo');
+  // chat sectioin start
+  Route::post('/send-chat-message','ChatBoxController@sendMessage');
+  // check user notification
+  Route::get('/get-user-notification','HomeController@getUserNotification');
 
-Route::get('/home','HomeController@index');
-Route::post('/home/get-user-info','HomeController@getUserInfo');
-Route::post('/home/get-singleperson-info','HomeController@getSinglePersonInfo');
-// chat sectioin start
-Route::post('/home/send-chat-message','ChatBoxController@sendMessage');
-// check user notification
-Route::get('/home/get-user-notification','HomeController@getUserNotification');
+  // profile section start
+  Route::get('/user-profile','ProfileController@index')->name('home-profile');
+});
+
+// profile section end
 /**
  * home page section end
  */
@@ -31,10 +39,13 @@ Auth::routes();
 /**
  * admin section start
  */
-Route::get('/admin', 'AdminController@index');
-Route::get('/admin/notification', 'NotificationController@index');
-Route::post('/admin/notification/get-user-info', 'NotificationController@getUserInfo');
-Route::post('/admin/notification', 'NotificationController@store');
+Route::prefix('admin')->group(function ()
+{
+  Route::get('/', 'AdminController@index');
+  Route::get('notification', 'NotificationController@index');
+  Route::post('notification/get-user-info', 'NotificationController@getUserInfo');
+  Route::post('notification', 'NotificationController@store');
+});
 /**
  * admin section end
  */

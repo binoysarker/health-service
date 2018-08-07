@@ -37,7 +37,7 @@
         </a>
         <transition name="slide">
           <ul v-if="showItem1">
-            <li><a :href="baseUrl+'/notification'">send notification</a></li>
+            <li><a :href="baseUrl+'/admin/notification'">send notification</a></li>
             <li><a>Plugins</a></li>
             <li><a>Add a member</a></li>
           </ul>
