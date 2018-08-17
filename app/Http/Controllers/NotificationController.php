@@ -39,32 +39,32 @@ class NotificationController extends Controller
   */
   public function getUserInfo(Request $request)
   {
-    return $request->all();
+    // return $request->all();
 
     $name = $request->name;
     $user = User::where('name','like',$name.'%')->limit(5)->get(['id','name']);
     return $user;
   }
   /**
-   * Send to multiple users
-   */
-   public function sendToMultipleUsers($users,$title,$message)
-   {
-     Notification::send($users, new UserOffers([
-       'title' => $title,
-       'message' => $message,
-     ]));
-   }
+  * Send to multiple users
+  */
+  public function sendToMultipleUsers($users,$title,$message)
+  {
+    Notification::send($users, new UserOffers([
+      'title' => $title,
+      'message' => $message,
+    ]));
+  }
   /**
-   * Send to single user
-   */
-   public function sendToSingleUser($user,$title,$message)
-   {
-     $user->notify(new UserOffers([
-       'title' => $title,
-       'message' => $message,
-     ]));
-   }
+  * Send to single user
+  */
+  public function sendToSingleUser($user,$title,$message)
+  {
+    $user->notify(new UserOffers([
+      'title' => $title,
+      'message' => $message,
+    ]));
+  }
 
   /**
   * Store a newly created resource in storage.
@@ -80,7 +80,7 @@ class NotificationController extends Controller
       'title' => 'required|max:55',
       'message' => 'required|max:100',
     ]);
-    
+
 
     // this part is to send message to single user
     if ($request->picked == null || $request->picked == 'no' || $request->selected == null)
@@ -105,6 +105,17 @@ class NotificationController extends Controller
       }
     }
     return redirect()->back();
+  }
+  /**
+  * showAllNotifications section
+  */
+  public function showAllNotifications(Request $request)
+  {
+    $user = User::find($request->id);
+    foreach ($user->notifications as $notification) {
+      $data = $notification->data;
+    }
+    return $data;
   }
 
 

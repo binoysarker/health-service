@@ -1,84 +1,197 @@
 <template lang="html">
-  <nav class="navbar is-transparent">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
-      <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
-    </a>
-    <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-
-  <div id="navbarExampleTransparentExample" class="navbar-menu">
-    <div class="navbar-start">
-      <a class="navbar-item" href="https://bulma.io/">
-        Home
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" :href="baseUrl">
+        <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
       </a>
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link" href="/documentation/overview/start/">
-          Docs
-        </a>
-        <div class="navbar-dropdown is-boxed">
-          <a class="navbar-item" href="/documentation/overview/start/">
-            Overview
-          </a>
-          <a class="navbar-item" href="https://bulma.io/documentation/modifiers/syntax/">
-            Modifiers
-          </a>
-          <a class="navbar-item" href="https://bulma.io/documentation/columns/basics/">
-            Columns
-          </a>
-          <a class="navbar-item" href="https://bulma.io/documentation/layout/container/">
-            Layout
-          </a>
-          <a class="navbar-item" href="https://bulma.io/documentation/form/general/">
-            Form
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item" href="https://bulma.io/documentation/elements/box/">
-            Elements
-          </a>
-          <a class="navbar-item is-active" href="https://bulma.io/documentation/components/breadcrumb/">
-            Components
-          </a>
-        </div>
+      <div :class="showBurgerClass" @click="showMenu()" data-target="navbarExampleTransparentExample">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </div>
+    <div id="navbarExampleTransparentExample" :class="showNavClass" >
+      <div class="navbar-start">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="/documentation/overview/start/">
 
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="field is-grouped">
-          <p class="control">
-            <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet" data-social-target="http://localhost:4000" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=http://localhost:4000&amp;via=jgthms">
-              <span class="icon">
-                <i class="fab fa-twitter"></i>
-              </span>
-              <span>
-                Tweet
-              </span>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading"><i class="fas fa-briefcase" aria-hidden="true"></i></p>
+                <p class="title">TimeLine</p>
+              </div>
+            </div>
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a class="navbar-item" href="/documentation/overview/start/">
+
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading"><i class="fas fa-briefcase" aria-hidden="true"></i></p>
+                  <p class="title">List View</p>
+                </div>
+              </div>
             </a>
-          </p>
-          <p class="control">
-            <a class="button is-primary" href="https://github.com/jgthms/bulma/releases/download/0.7.1/bulma-0.7.1.zip">
-              <span class="icon">
-                <i class="fas fa-download"></i>
-              </span>
-              <span>Download</span>
+            <a class="navbar-item" href="/documentation/overview/start/">
+
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading"><i class="fas fa-briefcase" aria-hidden="true"></i></p>
+                  <p class="title">Grid View</p>
+                </div>
+              </div>
             </a>
-          </p>
+          </div>
+        </div>
+        <a class="navbar-item" href="/documentation/overview/start/">
+
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading"><i class="fas fa-briefcase" aria-hidden="true"></i></p>
+              <p class="title">About</p>
+            </div>
+          </div>
+        </a>
+        <a class="navbar-item" href="/documentation/overview/start/">
+
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading"><i class="fas fa-briefcase" aria-hidden="true"></i></p>
+              <p class="title">Friends</p>
+            </div>
+          </div>
+        </a>
+        <a class="navbar-item " href="">
+
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading"><i class="fas fa-briefcase" aria-hidden="true"></i></p>
+              <p class="title">Photos</p>
+            </div>
+          </div>
+        </a>
+        <a class="navbar-item " href="">
+
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading"><i class="fas fa-briefcase" aria-hidden="true"></i></p>
+              <p class="title">Archive</p>
+            </div>
+          </div>
+        </a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="/documentation/overview/start/">
+
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading"><i class="fas fa-briefcase" aria-hidden="true"></i></p>
+                <p class="title">More</p>
+              </div>
+            </div>
+          </a>
+          <div class="navbar-dropdown is-boxed ">
+            <a class="navbar-item " href="">
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading"><i class="fas fa-briefcase" aria-hidden="true"></i></p>
+                  <p class="title">Videos</p>
+                </div>
+              </div>
+            </a>
+            <a class="navbar-item" href="/documentation/overview/start/">
+
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading"><i class="fas fa-briefcase" aria-hidden="true"></i></p>
+                  <p class="title">Sports</p>
+                </div>
+              </div>
+            </a>
+            <a class="navbar-item" href="/documentation/overview/start/">
+
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading"><i class="fas fa-briefcase" aria-hidden="true"></i></p>
+                  <p class="title">Movies</p>
+                </div>
+              </div>
+            </a>
+            <a class="navbar-item " href="">
+
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading"><i class="fas fa-briefcase" aria-hidden="true"></i></p>
+                  <p class="title">Music</p>
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
 </template>
 
 <script>
 export default {
+  computed:{
+    baseUrl(){
+      return this.$store.state.baseUrl;
+    },
+    makeActive(){
+      return this.$store.state.makeActive;
+    },
+    showNavClass(){
+      return {
+        'navbar-menu': true,
+        'is-active': this.makeActive,
+      };
+    },
+    showBurgerClass(){
+      return{
+        'navbar-burger burger': true,
+        'is-active': this.makeActive,
+      };
+    },
+  },
+  methods:{
+    showMenu(){
+      this.$store.dispatch('showMenu');
+    },
+  },
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
+nav.navbar,div.navbar-dropdown,div.navbar-menu{
+  background-color: #2B2F64;
+}
+p.heading, p.title{
+  color: white;
+  font-size: 12px;
+}
+a.navbar-link,a.navbar-item:hover p{
+  color: #2B2F64;
+}
+div.navbar-item.has-dropdown:hover a.navbar-link{
+  background-color: #2B2F64 !important;
+}
+div.navbar-burger span{
+  color: white;
+}
+.is-active{
+  animation: showWithScroll .5s;
+}
+
+@keyframes showWithScroll {
+  from{opacity: 0}
+  to{opacity: 1}
+}
+.navbar-brand img{
+  margin-left: 0.5rem;
+}
+.navbar-item{
+  padding-right: 3rem;
+}
 </style>

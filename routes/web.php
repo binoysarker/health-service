@@ -20,6 +20,10 @@ Route::prefix('home')->group(function ()
 
   // profile section start
   Route::get('/user-profile','ProfileController@index')->name('home-profile');
+  Route::get('/user-profile/get-user-info','ProfileController@getUserProfileInfo');
+  Route::post('/user-profile/send-post-data','ProfileController@sendPostData');
+  Route::get('/user-profile/get-user-posts-data','ProfileController@getUserAllPostData');
+  Route::post('/user-profile','ProfileController@store');
 });
 
 // profile section end
@@ -42,9 +46,10 @@ Auth::routes();
 Route::prefix('admin')->group(function ()
 {
   Route::get('/', 'AdminController@index');
-  Route::get('notification', 'NotificationController@index');
-  Route::post('notification/get-user-info', 'NotificationController@getUserInfo');
-  Route::post('notification', 'NotificationController@store');
+  Route::get('/notification', 'NotificationController@index');
+  Route::post('/notification/get-user-info', 'NotificationController@getUserInfo');
+  Route::post('/notification', 'NotificationController@store');
+  Route::post('/show-all-notifications', 'NotificationController@showAllNotifications');
 });
 /**
  * admin section end

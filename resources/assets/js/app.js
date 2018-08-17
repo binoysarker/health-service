@@ -26,12 +26,12 @@ Vue.use(VueChatScroll)
  */
 
 import {library} from '@fortawesome/fontawesome-svg-core'
-import {faUser,faReply,faInfo,faEnvelope,faExclamationTriangle,faComment,faCartPlus,faBook,faFlask,faBookOpen,faBriefcase,faSignOutAlt,faMale,faHeart,faKey,faUpload,faAngleDown} from '@fortawesome/free-solid-svg-icons'
+import {faUser,faReply,faInfo,faEnvelope,faExclamationTriangle,faComment,faCartPlus,faBook,faFlask,faBookOpen,faBriefcase,faSignOutAlt,faMale,faHeart,faKey,faUpload,faAngleDown,faPencilAlt,faCamera} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 import { dom } from '@fortawesome/fontawesome-svg-core'
 
 dom.watch() // This will kick of the initial replacement of i to svg tags and configure a MutationObserver
-library.add(faUser,faReply,faInfo,faEnvelope,faExclamationTriangle,faComment,faCartPlus,faBook,faFlask,faBookOpen,faBriefcase,faSignOutAlt,faMale,faHeart,faKey,faUpload,faAngleDown)
+library.add(faUser,faReply,faInfo,faEnvelope,faExclamationTriangle,faComment,faCartPlus,faBook,faFlask,faBookOpen,faBriefcase,faSignOutAlt,faMale,faHeart,faKey,faUpload,faAngleDown,faPencilAlt,faCamera)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
@@ -70,6 +70,8 @@ Vue.component('footer-section',
 require('./components/front_end/health_service/home_page/Footer.vue'));
 Vue.component('notification',
 require('./components/front_end/health_service/home_page/Notification.vue'));
+Vue.component('home-page-notification',
+require('./components/front_end/health_service/home_page/HomePageNotification.vue'));
 
 // home page section end
 // profile section start
@@ -81,6 +83,8 @@ Vue.component('intro-section',
 require('./components/front_end/health_service/home_page/profile/IntroSection.vue'));
 Vue.component('post-section',
 require('./components/front_end/health_service/home_page/profile/PostSection.vue'));
+Vue.component('edit-profile-modal',
+require('./components/front_end/health_service/home_page/profile/EditProfileModal.vue'));
 
 // profile section end
 // admin section start

@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Post;
+use App\Models\Profile;
 
 class User extends Authenticatable
 {
@@ -38,4 +40,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token','admin_status'
     ];
+    public function posts()
+    {
+      return $this->hasMany(Post::class);
+    }
+    public function profile()
+    {
+      return $this->hasOne(Profile::class);
+    }
 }

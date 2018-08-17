@@ -8,7 +8,7 @@
 
   {{-- second column group --}}
   <section class="section">
-    
+    <home-page-notification></home-page-notification>
     <div class="columns">
       {{-- user articles section --}}
       <div class="column is-6">

@@ -5,7 +5,7 @@
         <figure class="media-left" >
           <p class="image is-32x32"  >
 
-            <img :src="person.photo_url" :alt="person.name">
+            <img :src="baseUrl+'/'+person.photo_url" :alt="person.name">
             <!-- {{person}} -->
           </p>
         </figure>
@@ -19,7 +19,7 @@
           <nav class="level is-mobile">
             <div class="level-left">
               <a class="level-item image is-24x24">
-                <img src="public/img/home_page/online.png" alt="active" title="online" height="28">
+                <img :src="baseUrl+'/public/img/home_page/online.png'" alt="active" title="online" height="28">
               </a>
             </div>
           </nav>
@@ -55,7 +55,7 @@ export default {
 
     }
   },
-  
+
 }
 </script>
 

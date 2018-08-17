@@ -36,6 +36,19 @@ export const store = new Vuex.Store({
     notificationSearchValue:'',
     notificationUserNames:{},
     notification_user_id:'',
+    showAllNotifications:'',
+    tabListItems:[ // this data is in the PostSection.vue file
+      { item: 'make post', active: true, faClass:'fas fa-pencil-alt'},
+      { item: 'photo', active: false, faClass:'fas fa-camera'}
+    ],
+    PostText:'',// this data is in the PostSection.vue file
+    showEditProfileModal:false,// this data is in the EditProfileModal.vue file
+    showEditProfilePictureModal:false,// this data is in the EditProfileModal.vue file
+    ModalClass:'is-active',// this data is in the EditProfileModal.vue file
+    profileFile:'',// this data is in the EditProfileModal.vue file
+    profilePictureFile:'',// this data is in the EditProfileModal.vue file
+    profilePosterUrl:'',// this data is in the EditProfileModal.vue file
+    UserAllProfilePosts:'',// this data is in the PostSection.vue file
   },
   getters:{
 
@@ -43,6 +56,27 @@ export const store = new Vuex.Store({
   mutations:{
     showMenu:(state)=>{
       state.makeActive = !state.makeActive;
+    },
+    PostText:(state,value)=>{// this data is in the PostSection.vue file
+      state.PostText = value;
+    },
+    showEditProfileModal:(state,value)=>{// this data is in the showEditProfileModal.vue file
+      state.showEditProfileModal = value;
+    },
+    showEditProfilePictureModal:(state,value)=>{// this data is in the showEditProfilePictureModal.vue file
+      state.showEditProfilePictureModal = value;
+    },
+    profileFile:(state,value)=>{// this data is in the showEditProfileModal.vue file
+      state.profileFile = value;
+    },
+    profilePictureFile:(state,value)=>{// this data is in the showEditProfileModal.vue file
+      state.profilePictureFile = value;
+    },
+    profilePosterUrl:(state,profile_poster_url)=>{// this data is in the showEditProfileModal.vue file
+      state.profilePosterUrl = profile_poster_url;
+    },
+    ModalClass:(state,value)=>{
+      state.ModalClass = value;
     },
     setMakeMessageActive:(state,payload) =>{
       state.makeMessageActive = payload;
@@ -92,7 +126,28 @@ export const store = new Vuex.Store({
       state.notificationSearchValue = user.name;
       state.notification_user_id = user.id;
     },
-
+    showAllNotifications:(state,data)=>{
+      state.showAllNotifications = data;
+    },
+    tabListItems:(state,data)=>{
+      state.tabListItems = data;
+    },
+    makeListItemActive:(state,tabListItem)=>{
+      // now itterate over all the items in an array and checking for active status and making it true or false
+      _.map(state.tabListItems,function (item) {
+        if (item.item == tabListItem.item) {
+          return item.active = true;
+        }else {
+          return item.active = false;
+        }
+      });
+    },
+    PostText:(state,text)=>{// in PostSection.vue file
+      state.PostText = text;
+    },
+    UserAllProfilePosts:(state,userInfo)=>{// in PostSection.vue file
+      state.UserAllProfilePosts = userInfo;
+    },
   },
   actions:{
     showMenu:(context) => {
@@ -150,7 +205,7 @@ export const store = new Vuex.Store({
     },
     sendNotification:(context)=>{
       // console.log(context.state.notificationTitle,context.state.notificationMessage);
-      axios.post(context.state.baseUrl+'/home',{
+      axios.post(context.state.baseUrl+'/admin/notification',{
         title:context.state.notificationTitle,
         message:context.state.notificationMessage,
         picked:context.state.notificationPicked,
@@ -159,7 +214,7 @@ export const store = new Vuex.Store({
         user_id:context.state.notification_user_id,
       })
       .then(res=>{
-        console.log(res);
+        // console.log(res);
       })
       .catch(error=>{console.log(error);})
     },
@@ -173,6 +228,37 @@ export const store = new Vuex.Store({
         context.state.notificationUserNames = res.data;
       })
       .catch(err=>{console.log(err);});
+    },
+    showAllNotifications:(context,userId)=>{
+      // now make a axios request to get all the notifications and show this on the table
+      axios.post(context.state.baseUrl+'/admin/show-all-notifications',{id:userId})
+      .then(res=>{
+        // now i am getting all the notifications of a specifiec user
+        // console.log(res.data.data);
+        context.commit('showAllNotifications',res.data.data);
+
+
+      })
+      .catch(err=>{console.log(err);})
+    },
+    sendPostData:(context,text)=>{
+      // make a axios request to send the post data to the profiles table
+      axios.post(context.state.baseUrl+'/home/user-profile/send-post-data',{profile_uploaded_posts:text})
+      .then(res=>{
+        // console.log(res.data);
+        context.commit('UserAllProfilePosts',res.data);
+        // location.reload();
+      })
+      .catch(error=>{console.log(error);})
+    },
+    UserAllProfilePosts:(context)=>{
+      axios.get(context.state.baseUrl+'/home/user-profile/get-user-posts-data')
+      .then(res=>{
+        // console.log(res.data);
+        context.commit('UserAllProfilePosts',res.data);
+      })
+      .catch(error=>{console.log(error);})
+      context.commit('UserAllProfilePosts');
     },
   },
 });
